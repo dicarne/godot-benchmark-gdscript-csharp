@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddk7fk23smknn"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_cp21t"]
+[ext_resource type="PackedScene" uid="uid://c0tvvpulwqoxb" path="res://gds/gds.tscn" id="2_cv04s"]
+[ext_resource type="PackedScene" uid="uid://p2ihbe0t18r3" path="res://cs/cs.tscn" id="3_f8v4a"]
+[ext_resource type="Script" path="res://cs/another_cs.cs" id="4_0f4av"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cp21t")
+
+[node name="gds" parent="." instance=ExtResource("2_cv04s")]
+
+[node name="cs" parent="." instance=ExtResource("3_f8v4a")]
+
+[node name="cs2" type="Node" parent="."]
+script = ExtResource("4_0f4av")
+
+[node name="Node3D" type="Node3D" parent="."]
