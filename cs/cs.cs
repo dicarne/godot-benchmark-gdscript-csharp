@@ -26,7 +26,7 @@ public partial class cs : Node
 		func_call_from_cs_node_csstyle_benchmark();
 		emit_signal_benchmark();
 		node3d_position_benchmark();
-		// emit_signal_cs_benchmark();
+		emit_signal_cs_benchmark();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -286,7 +286,7 @@ public partial class cs : Node
 
 	public void emit_signal_cs_benchmark()
 	{
-		var t = 8;
+		var t = 10000000;
 		var r = t / 10000000.0;
 		var n = GetParent().GetNode("cs2");
 		var t1 = Godot.Time.GetTicksUsec();
@@ -298,7 +298,7 @@ public partial class cs : Node
 		}
 
 		var t2 = Godot.Time.GetTicksUsec();
-		logv("emit signal (to cs node) [only for 8 times]", (t2 - t1 - loop_overhead * r) / 1000, t);
+		logv("emit signal (to cs node)", (t2 - t1 - loop_overhead * r) / 1000, t);
 	}
 
 	public int large_obj_banchmark(Godot.Collections.Dictionary a)

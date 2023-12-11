@@ -15,7 +15,7 @@ func runall():
 	func_call_from_node_benchmark()
 	func_call_from_cs_node_benchmark()
 	emit_signal_benchmark()
-#	emit_signal_cs_benchmark()
+	emit_signal_cs_benchmark()
 	node3d_position_benchmark()
 
 var loop_overhead = 0
@@ -125,7 +125,7 @@ func emit_signal_benchmark():
 	get_parent().logv("gds" ,"emit signal (to gd node)", (t2-t1-loop_overhead)/1000, 10000000)
 
 func emit_signal_cs_benchmark():
-	var t = 8
+	var t = 10000000
 	var r = t / 10000000.0
 	var n = get_parent().get_node("cs2")
 	assert(n.has_signal("ASignal"), "CS node dont have signal")
@@ -133,9 +133,9 @@ func emit_signal_cs_benchmark():
 	var sum = 0
 	for i in range(t):
 		sum += i
-		n.ASignal.emit(i)
+		n.emit_signal("ASignal", i)
 	var t2 = Time.get_ticks_usec()
-	get_parent().logv("gds" ,"emit signal (to cs node) [only for 8 times]", (t2-t1-loop_overhead*r)/1000, 8)
+	get_parent().logv("gds" ,"emit signal (to cs node)", (t2-t1-loop_overhead*r)/1000, 8)
 
 func large_obj_banchmark(a):
 	var sumv = 0
